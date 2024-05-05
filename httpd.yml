@@ -1,0 +1,22 @@
+---
+- name: configure a webserver
+  hosts: clientnode
+  become: true
+  become_user: root
+  tasks:
+    - name: Install httpd
+      ansible.builtin.yum:
+        name: httpd
+        state: present
+    - name: start the httpd
+      ansible.builtin.service:
+        name: httpd
+        state: started
+    - name: Copy of index.html from ansible to remote
+      ansible.builtin.copy:
+        src: /path/local/index.html
+      dest: /var/www/html/index.html
+    - name: Restart httpd
+      ansible.builtin.service:
+        name: httpd
+        state: restarted

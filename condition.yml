@@ -1,0 +1,19 @@
+---
+- name: Conditions
+  hosts: all
+  tasks:
+    - name: Install httpd on RedHat
+      ansible.builtin.yum:
+        name: httpd
+        state: present
+      when: ansible_facts["ansible_distribution"] == "RedHat"
+    - name: Install apache2 on Ubuntu
+      ansible.builtin.apt:
+        name: apache2
+        state: present
+      when: ansible_facts["ansible_distribution"] == "Ubuntu"
+    - name: Install httpd on Amazon Linux 2
+      ansible.builtin.yum:
+        name: httpd
+        state: present
+      when: ansible_facts["ansible_distribution"] == "Amazon" and ansible_facts["ansible_distribution_major_version"] == "2"

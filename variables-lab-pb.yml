@@ -1,0 +1,9 @@
+---
+- name: Ansible Variable Demo
+  hosts: localhost
+  vars:
+    greeting: "Welcome to Ansible workshop"
+  tasks:
+    - name: Display Greeting Variable value
+      ansible.builtin.debug:
+        msg: "Hello{{greeting}}"

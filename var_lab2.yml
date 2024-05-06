@@ -1,0 +1,10 @@
+---
+- name: Ansible Variable Demo
+  hosts: localhost
+  vars_files:
+    - prod-variables.yml
+  tasks:
+    - name: Install apache web service
+      ansible.builtin.apt:
+        name: {{ package }}
+        state: present

@@ -1,0 +1,10 @@
+---
+- name: register variable demo
+  hosts: clientnode
+  tasks:
+    - name: fetch the client node hosts
+      ansible.builtin.command: whoami
+      register: clientnode_user
+    - name: display the retur username
+      ansible.builtin.debug:
+        msg: "{{clientnode_user}}"

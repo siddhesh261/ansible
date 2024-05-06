@@ -1,0 +1,13 @@
+---
+- name: register variable demo
+  hosts: clientnode
+  become: true
+  become_user: root
+
+  tasks:
+    - name: fetch the client node hosts
+      ansible.builtin.command: cat /etc/os-release
+      register: clientnode_user
+    - name: display the retur username
+      ansible.builtin.debug:
+        msg: "{{clientnode_user}}"

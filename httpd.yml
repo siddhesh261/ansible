@@ -12,10 +12,10 @@
       ansible.builtin.service:
         name: httpd
         state: started
-    - name: Copy of index.html from ansible to remote
+    - name: Copy from ansible to remote
       ansible.builtin.copy:
-        src: /path/local/index.html
-      dest: /var/www/html/index.html
+        src: /home/ec2-user/ansi_labs/index.html
+        dest: /home/ec2-user/index.html
     - name: Restart httpd
       ansible.builtin.service:
         name: httpd
